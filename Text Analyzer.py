@@ -49,9 +49,11 @@ def write_file(dict_):
 
     :param dict_ (dict) words and their frequency
     """
-    output_name = input("\nOutput File Name [include .txt]: ")
+    output_name = input("Output File Name [include .txt]: ")
     with open(output_name, "w") as f:
-        print(dict_, file=f)
+        print("Word Count Frequency Table 'Word (Count)'\n", file = f)
+        for key, value in dict_.items():
+            print("{} ({})".format(key, value), file = f)
         
 
 while True:
@@ -62,21 +64,27 @@ while True:
     if choice.lower() == "t":
         sentence = input("\nInput Sentence: ")
         t_dict = input_analysis(sentence)
-        output = input("Write output to file? [y/n] ")
+        output = input("\nWrite output to file? [y/n] ")
         if output.lower() == "y":
             write_file(t_dict)
+        elif output.lower() == "n":
+            for key, value in t_dict.items():
+                print("{} ({})".format(key, value))
         else:
-            print(t_dict)
+            print("Try Again\n")
 
     # Analyze File
     if choice.lower() == "f":
         fname = input("File Name: ")
         f_dict = file_analysis(fname)
-        output = input("Write output to file? [y/n] ")
+        output = input("\nWrite output to file? [y/n] ")
         if output.lower() == "y":
             write_file(f_dict)
+        elif output.lower() == "n":
+            for key, value in f_dict.items():
+                print("{} ({})".format(key, value))
         else:
-            print(f_dict)
+            print("Try Again\n")
 
     # View Analysis
     if choice.lower() == "v":
