@@ -51,7 +51,7 @@ def write_file(dict_):
     """
     output_name = input("Output File Name [include .txt]: ")
     with open(output_name, "w") as f:
-        print("Word Count Frequency Table 'Word (Count)'\n", file = f)
+        print("Word Count Frequency Table\n", file = f)
         for key, value in dict_.items():
             print("{} ({})".format(key, value), file = f)
         
@@ -68,6 +68,7 @@ while True:
         if output.lower() == "y":
             write_file(t_dict)
         elif output.lower() == "n":
+            print("\nAnalysis:")
             for key, value in t_dict.items():
                 print("{} ({})".format(key, value))
         else:
@@ -75,12 +76,13 @@ while True:
 
     # Analyze File
     if choice.lower() == "f":
-        fname = input("File Name: ")
+        fname = input("File Name [include .txt]: ")
         f_dict = file_analysis(fname)
         output = input("\nWrite output to file? [y/n] ")
         if output.lower() == "y":
             write_file(f_dict)
         elif output.lower() == "n":
+            print("\nAnalysis:")
             for key, value in f_dict.items():
                 print("{} ({})".format(key, value))
         else:
